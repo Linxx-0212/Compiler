@@ -95,23 +95,21 @@ non terminal LinkedList<IClassDecl> otherClass;
 //non terminal LinkedList<IClassDecl> otherClass;
 
 /* Declare precedence and associativity  here */
-precedence left TIMES;
-precedence right UMINUS;
-precedence right NOT;
+
+
+
 precedence left AND;
-precedence left LT;
 precedence left EQUAL;
-precedence left PLUS;
-precedence left MINUS;
+precedence nonassoc LT;
+
+precedence left PLUS,MINUS;
+precedence left TIMES;
+precedence right NOT,UMINUS;
 precedence right BYTE;
-precedence nonassoc ELSE;
-precedence nonassoc IF;
+precedence left LBRACKET,LPAREN,RBRACKET,RPAREN;
 precedence right THIS;
+precedence left ELSE;
 precedence right DOT;
-precedence right LBRACKET;
-precedence right LPAREN;
-
-
 /* Meggy Java Grammar */
 start with program;
 
@@ -200,8 +198,8 @@ type    ::= MEGGYCOLOR:op LBRACKET RBRACKET {: RESULT = new ColorArrayType(op.li
 statement_list  ::= statement:s statement_list:sl
     {:
         List list = new LinkedList<IStatement>();
-        list.addAll(sl);
         list.add(s);
+        list.addAll(sl);
         RESULT = list;
     :}
 |   LBRACE statement_list:sl RBRACE
@@ -219,8 +217,8 @@ statement  ::=  MEGGYSETPIXEL:op LPAREN expression:a COMMA expression:b COMMA ex
 |   MEGGYTONESTART:op LPAREN expression:a COMMA expression:b RPAREN SEMI {: RESULT = new MeggyToneStart(op.line,op.pos,a,b); :}
 |   MEGGYDELAY:op LPAREN expression:a RPAREN SEMI {: RESULT = new MeggyDelay(op.line,op.pos,a); :}
 |   expression:a DOT ID:b LPAREN subexpression:exp RPAREN SEMI {: RESULT = new CallStatement(b.line,b.pos,a,b.lexeme,exp); :}
-|   IF:op LPAREN expression:a RPAREN block_statement:s1 ELSE block_statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
 |   IF:op LPAREN expression:a RPAREN statement:s1 ELSE statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
+|   IF:op LPAREN expression:a RPAREN block_statement:s1 ELSE block_statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
 |   IF:op LPAREN expression:a RPAREN block_statement:s1 ELSE statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
 |   IF:op LPAREN expression:a RPAREN statement:s1 ELSE block_statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
 |   IF:op LPAREN expression:a RPAREN block_statement:s {: RESULT = new IfStatement(op.line,op.pos,a,s,null); :}
@@ -236,7 +234,7 @@ expression  ::= expression:a AND:op expression:b {: RESULT = new AndExp(op.line,
 |   expression:a PLUS:op expression:b {: RESULT = new PlusExp(op.line,op.pos,a,b); :}
 |   expression:a MINUS:op expression:b {: RESULT = new MinusExp(op.line,op.pos,a,b); :}
 |   expression:a TIMES:op expression:b {: RESULT = new MulExp(op.line,op.pos,a,b); :}
-|   MINUS:op expression:a {: RESULT = new NegExp(op.line,op.pos,a); :}
+|   MINUS:op expression:a {: RESULT = new NegExp(op.line,op.pos,a); :} %prec UMINUS
 |   expression:a LBRACKET expression:b RBRACKET  {: RESULT = new ArrayExp(a.getLine(),a.getPos(),a,b); :}
 |   expression:a DOT LENGTH:op {:RESULT = new LengthExp(op.line,op.pos,a); :} 
 |   expression:a DOT ID:b LPAREN subexpression:exp RPAREN {: RESULT = new CallExp(b.line,b.pos,a,b.lexeme,exp); :}
@@ -268,6 +266,10 @@ subexpression   ::= expression:exp
         se.add(exp);
         RESULT = se;
     :}
+|   LPAREN subexpression:se RPAREN   
+{:
+    RESULT = se;
+:}
 |   {:
     RESULT = new LinkedList<IExp>();
 
@@ -288,7 +290,7 @@ variableDecl ::= type:typ ID:name SEMI
             RESULT = list;
         :}
 ;
- methodDecl ::= PUBLIC:op type:typ ID:name LPAREN Paras:para RPAREN LBRACE variableDecl:var statement_list:s returnStatement:rt RBRACE
+ methodDecl ::= PUBLIC:op type:typ ID:name LPAREN Paras:para RPAREN LBRACE variableDecl:var statement_list:s returnStatement:rt RBRACE methodDecl:list
         {:
             LinkedList<Formal> _para = new LinkedList<Formal>();
             LinkedList<VarDecl> _varDe = new LinkedList<VarDecl>();
@@ -298,13 +300,10 @@ variableDecl ::= type:typ ID:name SEMI
             stat.addAll(s);
             MethodDecl method = new MethodDecl(op.line,op.pos,typ,name+"",_para,_varDe,stat,rt);
             LinkedList<MethodDecl> methodlist = new LinkedList<MethodDecl>();
+            if (list !=null)
+                methodlist.addAll(list);
             methodlist.add(method);
             RESULT = methodlist;
-        :}
-|               PUBLIC:op type:typ ID:name LPAREN Paras:para RPAREN LBRACE variableDecl:var statement_list:s returnStatement:rt RBRACE methodDecl:list
-        {:
-            MethodDecl method = new MethodDecl(op.line,op.pos,typ,name+"",para,var,s,rt);
-            list.add(method);
         :}
 |{:
     RESULT = new LinkedList<MethodDecl>();
@@ -328,16 +327,52 @@ Paras::= type:typ ID:name
     RESULT = new LinkedList<>();
 :}
 ;
-returnStatement::= RETURN expression:a SEMI{:
+returnStatement::= RETURN expression:a SEMI
+{:
     RESULT = a; 
 :}
 |{:
     RESULT = null;
 :}
 ;
-otherClass ::=
-{:
-    LinkedList<IClassDecl> classDe = new LinkedList<IClassDecl>();
-    RESULT = classDe;
-:}
-;
+otherClass ::= CLASS:op1 ID:name LBRACE variableDecl:var methodDecl:methods RBRACE otherClass:other 
+        {:
+        LinkedList<VarDecl> _varDecls = new LinkedList<VarDecl>();
+        LinkedList<MethodDecl> _methodDecls = new LinkedList<MethodDecl>();
+        if(var!=null){
+        _varDecls.addAll(var);
+        }
+        if(methods!=null){
+        _methodDecls.addAll(methods);
+        }
+        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
+        TopClassDecl classdec = new TopClassDecl(op1.line,op1.pos,name+"",_varDecls,_methodDecls);
+        classDecl.add((IClassDecl)classdec);
+        if(other!=null){
+            classDecl.addAll(other);
+        }           
+        RESULT = classDecl;     
+        :}
+|       CLASS:op1 ID:name EXTENDS ID:parent LBRACE variableDecl:var methodDecl:methods RBRACE otherClass:other 
+           {:
+        LinkedList<VarDecl> _varDecls = new LinkedList<VarDecl>();
+        LinkedList<MethodDecl> _methodDecls = new LinkedList<MethodDecl>();
+        if(var!=null){
+        _varDecls.addAll(var);
+        }
+        if(methods!=null){
+        _methodDecls.addAll(methods);
+        }      
+        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
+        ChildClassDecl classdec = new ChildClassDecl(op1.line,op1.pos,name+"",parent+"",_varDecls,_methodDecls);
+        classDecl.add((IClassDecl)classdec);
+        if(other!=null){
+            classDecl.addAll(other);
+        }           
+        RESULT = classDecl;     
+        :}
+|       {:
+        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
+        RESULT = classDecl;     
+        :}
+        ;

@@ -48,7 +48,7 @@ function compareMJwithJava()
     fi
     
     # run the simulator on the generated .s file
-    java -jar MJSIM.jar -b -f $filename.java.s &> t1
+    java -jar MJRF.jar -b -f $filename.java.s &> t1
     
     # remove any previous versions of the file
     rm *.class t2  > /dev/null 2>&1
@@ -79,7 +79,7 @@ then
 else
     echo
     echo "#### Testing with the files in WorkingTestCases ####"
-    for filename in `ls WorkingTestCases/*.java`
+    for filename in `ls *.java`
     do
         compareMJwithJava $filename
     done
