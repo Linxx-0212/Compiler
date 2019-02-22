@@ -87,7 +87,7 @@ non terminal MainClass main_class;
 non terminal LinkedList<MethodDecl> methodDecl;
 non terminal LinkedList<VarDecl> variableDecl;
 non terminal LinkedList<IExp> subexpression;
-non terminal LinkedList<Formal> Paras;
+non terminal LinkedList<Formal> paras;
 non terminal IType type;
 non terminal IExp expression;
 non terminal IExp returnStatement;
@@ -106,7 +106,7 @@ precedence left PLUS,MINUS;
 precedence left TIMES;
 precedence right NOT,UMINUS;
 precedence right BYTE;
-precedence left LBRACKET,LPAREN,RBRACKET,RPAREN;
+precedence left LBRACKET,LPAREN,RBRACKET,RPAREN,LBRACE,RBRACE;
 precedence right THIS;
 precedence left ELSE;
 precedence right DOT;
@@ -175,7 +175,6 @@ main_class ::=
           :}
           RBRACE
           {:
-            
             parser.out.flush();
           :}
     ;
@@ -189,11 +188,11 @@ type    ::= MEGGYCOLOR:op LBRACKET RBRACKET {: RESULT = new ColorArrayType(op.li
 |   BOOLEAN:op {: RESULT = new BoolType(op.line,op.pos); :}
 |   BYTE:op {: RESULT = new ByteType(op.line,op.pos); :}
 |   INT:op {: RESULT = new IntType(op.line,op.pos); :}
-|   VOID:op {: RESULT = new VoidType(op.line,op.pos); :}
+|   VOID:op {:  RESULT = new VoidType(op.line,op.pos); :}
 |   MEGGYCOLOR:op {:  RESULT = new ColorType(op.line,op.pos); :}
 |   MEGGYBUTTON:op {: RESULT = new ButtonType(op.line,op.pos); :}
 |   MEGGYTONE:op {: RESULT = new ToneType(op.line,op.pos); :}
-|   ID:op {: RESULT = new ClassType(op.line,op.pos,op.lexeme); :}
+|   ID:op {: ; RESULT = new ClassType(op.line,op.pos,op.lexeme); :}
 ;
 statement_list  ::= statement:s statement_list:sl
     {:
@@ -202,28 +201,19 @@ statement_list  ::= statement:s statement_list:sl
         list.addAll(sl);
         RESULT = list;
     :}
-|   LBRACE statement_list:sl RBRACE
-    {:
-        RESULT = sl;
-    :}
-
 |   {:
     RESULT = new LinkedList<IStatement>();
 :}
 ;
 
-statement  ::=  MEGGYSETPIXEL:op LPAREN expression:a COMMA expression:b COMMA expression:c RPAREN SEMI {: RESULT = new MeggySetPixel(op.line,op.pos,a,b,c); :}
+statement  ::=  block_statement:a {: RESULT = a; :}
+|   MEGGYSETPIXEL:op LPAREN expression:a COMMA expression:b COMMA expression:c RPAREN SEMI {: RESULT = new MeggySetPixel(op.line,op.pos,a,b,c); :}
 |   MEGGYSETAUXLEDS:op LPAREN expression:a RPAREN SEMI {: RESULT = new MeggySetAuxLEDs(op.line,op.pos,a); :}
 |   MEGGYTONESTART:op LPAREN expression:a COMMA expression:b RPAREN SEMI {: RESULT = new MeggyToneStart(op.line,op.pos,a,b); :}
 |   MEGGYDELAY:op LPAREN expression:a RPAREN SEMI {: RESULT = new MeggyDelay(op.line,op.pos,a); :}
 |   expression:a DOT ID:b LPAREN subexpression:exp RPAREN SEMI {: RESULT = new CallStatement(b.line,b.pos,a,b.lexeme,exp); :}
 |   IF:op LPAREN expression:a RPAREN statement:s1 ELSE statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
-|   IF:op LPAREN expression:a RPAREN block_statement:s1 ELSE block_statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
-|   IF:op LPAREN expression:a RPAREN block_statement:s1 ELSE statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
-|   IF:op LPAREN expression:a RPAREN statement:s1 ELSE block_statement:s2 {: RESULT = new IfStatement(op.line,op.pos,a,s1,s2); :}
-|   IF:op LPAREN expression:a RPAREN block_statement:s {: RESULT = new IfStatement(op.line,op.pos,a,s,null); :}
 |   IF:op LPAREN expression:a RPAREN statement:s {: RESULT = new IfStatement(op.line,op.pos,a,s,null); :}
-|   WHILE:op LPAREN expression:a RPAREN block_statement:s {: RESULT = new WhileStatement(op.line,op.pos,a,s); :}
 |   WHILE:op LPAREN expression:a RPAREN statement:s {: RESULT = new WhileStatement(op.line,op.pos,a,s); :}
 |   ID:a ASSIGN:op expression:b SEMI {: RESULT = new AssignStatement(op.line,op.pos,a.lexeme,b); :}
 |   ID:a LBRACKET expression:b RBRACKET ASSIGN:op expression:c SEMI {: RESULT = new ArrayAssignStatement(op.line,op.pos,new IdLiteral(a.line,a.pos,a+""),b,c); :}
@@ -275,49 +265,39 @@ subexpression   ::= expression:exp
 
 :}
 ;
-variableDecl ::= type:typ ID:name SEMI
+variableDecl ::=variableDecl:list type:typ ID:name SEMI
         {:
-            LinkedList<VarDecl> var_list = new LinkedList<VarDecl>();
-            VarDecl _var = new VarDecl(name.line,name.pos,typ,name.lexeme);
-            var_list.add(_var);
-            RESULT = var_list;
-        :}
-|       variableDecl:list type:typ ID:name SEMI
-        {:
+
             //LinkedList<VarDecl> var_list = new LinkedList<VarDecl>();
             VarDecl _var = new VarDecl(name.line,name.pos,typ,name.lexeme);
             list.add(_var);
             RESULT = list;
         :}
-;
- methodDecl ::= PUBLIC:op type:typ ID:name LPAREN Paras:para RPAREN LBRACE variableDecl:var statement_list:s returnStatement:rt RBRACE methodDecl:list
-        {:
-            LinkedList<Formal> _para = new LinkedList<Formal>();
-            LinkedList<VarDecl> _varDe = new LinkedList<VarDecl>();
-            LinkedList<IStatement> stat = new LinkedList<IStatement>();
-            _para.addAll(para);
-            _varDe.addAll(var);
-            stat.addAll(s);
-            MethodDecl method = new MethodDecl(op.line,op.pos,typ,name+"",_para,_varDe,stat,rt);
-            LinkedList<MethodDecl> methodlist = new LinkedList<MethodDecl>();
-            if (list !=null)
-                methodlist.addAll(list);
-            methodlist.add(method);
-            RESULT = methodlist;
-        :}
 |{:
-    RESULT = new LinkedList<MethodDecl>();
+
+RESULT = new LinkedList<VarDecl>();
 :}
 ;
+methodDecl ::= methodDecl:ml PUBLIC:op type:t ID:id LPAREN paras:p RPAREN LBRACE variableDecl:vl statement_list:sl returnStatement:r RBRACE
+    {:
 
-Paras::= type:typ ID:name
+        ml.add(new MethodDecl(op.line,op.pos,t,id.lexeme,p,vl,sl,r));
+        RESULT = ml;
+    :}   
+|   
+    {:
+        RESULT = new LinkedList<>();
+    :}
+;
+
+paras::= type:typ ID:name
 {:
     LinkedList<Formal> ls = new LinkedList<Formal>();
     Formal para = new Formal(name.line,name.pos,typ,name.lexeme);
     ls.add(para);
     RESULT = ls;
 :}
-| type:typ ID:name COMMA Paras:list
+|  paras:list COMMA type:typ ID:name
 {:
     Formal para = new Formal(name.line,name.pos,typ,name.lexeme);
     list.add(para);
@@ -335,44 +315,13 @@ returnStatement::= RETURN expression:a SEMI
     RESULT = null;
 :}
 ;
-otherClass ::= CLASS:op1 ID:name LBRACE variableDecl:var methodDecl:methods RBRACE otherClass:other 
-        {:
-        LinkedList<VarDecl> _varDecls = new LinkedList<VarDecl>();
-        LinkedList<MethodDecl> _methodDecls = new LinkedList<MethodDecl>();
-        if(var!=null){
-        _varDecls.addAll(var);
-        }
-        if(methods!=null){
-        _methodDecls.addAll(methods);
-        }
-        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
-        TopClassDecl classdec = new TopClassDecl(op1.line,op1.pos,name+"",_varDecls,_methodDecls);
-        classDecl.add((IClassDecl)classdec);
-        if(other!=null){
-            classDecl.addAll(other);
-        }           
-        RESULT = classDecl;     
-        :}
-|       CLASS:op1 ID:name EXTENDS ID:parent LBRACE variableDecl:var methodDecl:methods RBRACE otherClass:other 
-           {:
-        LinkedList<VarDecl> _varDecls = new LinkedList<VarDecl>();
-        LinkedList<MethodDecl> _methodDecls = new LinkedList<MethodDecl>();
-        if(var!=null){
-        _varDecls.addAll(var);
-        }
-        if(methods!=null){
-        _methodDecls.addAll(methods);
-        }      
-        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
-        ChildClassDecl classdec = new ChildClassDecl(op1.line,op1.pos,name+"",parent+"",_varDecls,_methodDecls);
-        classDecl.add((IClassDecl)classdec);
-        if(other!=null){
-            classDecl.addAll(other);
-        }           
-        RESULT = classDecl;     
-        :}
-|       {:
-        LinkedList<IClassDecl> classDecl = new LinkedList<IClassDecl>();
-        RESULT = classDecl;     
-        :}
-        ;
+otherClass ::=otherClass:cl CLASS ID:id LBRACE variableDecl:v methodDecl:m RBRACE
+    {:
+        cl.add(new TopClassDecl(id.line,id.pos,id.lexeme,v,m));
+        RESULT = cl;
+    :}
+|   
+    {:
+        RESULT = new LinkedList<>();
+    :}
+;
