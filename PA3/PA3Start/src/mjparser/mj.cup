@@ -130,7 +130,7 @@ main_class ::=
                 // Check filename is class name, if not exit with error message
                 if(!parser.programName.equals(name+".java"))
                 {
-                    System.out.println("Filename and Classname don not match");
+                    System.out.println("Filename and Classname do not match");
                     System.exit(0);
                 }
             :}
