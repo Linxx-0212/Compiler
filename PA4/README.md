@@ -1,6 +1,6 @@
-# PA3
+# PA4
 
-This project is to build a symbol table then print the ouput to *.st.dot and *.st.txt.
-Then it will check types by using the built symbol table.
-There are two working testcase in PA3/PA3Start/TestCasesMeggy/WorkingTestCases, 
-and two error testcases in /PA3/PA3Start/TestCasesMeggy/WorkingErrorTestCases.
+This project is to use symbol table we built before to generate assembly code.
+There are some extra testcases in PA4/PA4Start/Examples
+
+The output has no difference with the reference compiler when using those testcases.
