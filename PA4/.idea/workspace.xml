@@ -19,8 +19,8 @@
       <file leaf-file-name="Label.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PA4Start/src/label/Label.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            <state relative-caret-position="400">
+              <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -29,8 +29,16 @@
       <file leaf-file-name="AVRgenVisitor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PA4Start/src/ast_visitors/AVRgenVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="635" column="1" lean-forward="true" selection-start-line="635" selection-start-column="1" selection-end-line="635" selection-end-column="1" />
+            <state relative-caret-position="4197">
+              <caret line="412" column="24" lean-forward="false" selection-start-line="412" selection-start-column="21" selection-end-line="412" selection-end-column="24" />
+              <caret line="412" column="36" lean-forward="false" selection-start-line="412" selection-start-column="33" selection-end-line="412" selection-end-column="36" />
+              <caret line="412" column="48" lean-forward="false" selection-start-line="412" selection-start-column="45" selection-end-line="412" selection-end-column="48" />
+              <caret line="419" column="15" lean-forward="false" selection-start-line="419" selection-start-column="12" selection-end-line="419" selection-end-column="15" />
+              <caret line="420" column="15" lean-forward="false" selection-start-line="420" selection-start-column="12" selection-end-line="420" selection-end-column="15" />
+              <caret line="437" column="15" lean-forward="false" selection-start-line="437" selection-start-column="12" selection-end-line="437" selection-end-column="15" />
+              <caret line="438" column="15" lean-forward="false" selection-start-line="438" selection-start-column="12" selection-end-line="438" selection-end-column="15" />
+              <caret line="444" column="15" lean-forward="false" selection-start-line="444" selection-start-column="12" selection-end-line="444" selection-end-column="15" />
+              <caret line="445" column="15" lean-forward="false" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,16 +81,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AVRgenVisitor.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/PA4Start/MJRF.jar!/ast_visitors/AVRgenVisitor.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="101" column="42" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -99,6 +97,7 @@
       <find>LtExp</find>
       <find>Integer</find>
       <find>cpc</find>
+      <find>Ifs</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -771,12 +770,12 @@
       <updated>1555192557891</updated>
       <workItem from="1555192560544" duration="6921000" />
       <workItem from="1555338967459" duration="507000" />
-      <workItem from="1555340034016" duration="28842000" />
+      <workItem from="1555340034016" duration="29689000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36270000" />
+    <option name="totallyTimeSpent" value="37117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -951,16 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PA4Start/src/MJDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="106" column="38" lean-forward="false" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PA4Start/src/ast_visitors/CheckTypes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1084">
@@ -973,14 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/PA4Start/MJRF.jar!/ast_visitors/AVRgenVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="101" column="42" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1006,16 +987,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PA4Start/src/label/Label.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        <state relative-caret-position="400">
+          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/PA4Start/MJRF.jar!/ast_visitors/AVRgenVisitor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PA4Start/src/MJDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="106" column="38" lean-forward="false" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PA4Start/src/ast_visitors/AVRgenVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="635" column="1" lean-forward="true" selection-start-line="635" selection-start-column="1" selection-end-line="635" selection-end-column="1" />
+        <state relative-caret-position="4197">
+          <caret line="412" column="24" lean-forward="false" selection-start-line="412" selection-start-column="21" selection-end-line="412" selection-end-column="24" />
+          <caret line="412" column="36" lean-forward="false" selection-start-line="412" selection-start-column="33" selection-end-line="412" selection-end-column="36" />
+          <caret line="412" column="48" lean-forward="false" selection-start-line="412" selection-start-column="45" selection-end-line="412" selection-end-column="48" />
+          <caret line="419" column="15" lean-forward="false" selection-start-line="419" selection-start-column="12" selection-end-line="419" selection-end-column="15" />
+          <caret line="420" column="15" lean-forward="false" selection-start-line="420" selection-start-column="12" selection-end-line="420" selection-end-column="15" />
+          <caret line="437" column="15" lean-forward="false" selection-start-line="437" selection-start-column="12" selection-end-line="437" selection-end-column="15" />
+          <caret line="438" column="15" lean-forward="false" selection-start-line="438" selection-start-column="12" selection-end-line="438" selection-end-column="15" />
+          <caret line="444" column="15" lean-forward="false" selection-start-line="444" selection-start-column="12" selection-end-line="444" selection-end-column="15" />
+          <caret line="445" column="15" lean-forward="false" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
