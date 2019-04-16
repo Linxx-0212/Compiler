@@ -1,0 +1,67 @@
+digraph ASTGraph {
+0 [ label="Program" ];
+1 [ label="MainClass" ];
+0 -> 1
+2 [ label="BlockStatement" ];
+1 -> 2
+3 [ label="WhileStatement" ];
+2 -> 3
+4 [ label="EqualExp" ];
+3 -> 4
+5 [ label="MeggyGetPixel" ];
+4 -> 5
+6 [ label="ByteCast" ];
+5 -> 6
+7 [ label="IntLiteral\n0" ];
+6 -> 7
+8 [ label="ByteCast" ];
+5 -> 8
+9 [ label="IntLiteral\n0" ];
+8 -> 9
+10 [ label="ColorLiteral\nMeggy.Color.GREEN" ];
+4 -> 10
+11 [ label="BlockStatement" ];
+3 -> 11
+12 [ label="IfStatement" ];
+11 -> 12
+13 [ label="MeggyCheckButton" ];
+12 -> 13
+14 [ label="ButtonLiteral\nMeggy.Button.A" ];
+13 -> 14
+15 [ label="BlockStatement" ];
+12 -> 15
+16 [ label="MeggySetPixel" ];
+15 -> 16
+17 [ label="ByteCast" ];
+16 -> 17
+18 [ label="IntLiteral\n1" ];
+17 -> 18
+19 [ label="ByteCast" ];
+16 -> 19
+20 [ label="IntLiteral\n3" ];
+19 -> 20
+21 [ label="ColorLiteral\nMeggy.Color.ORANGE" ];
+16 -> 21
+22 [ label="BlockStatement" ];
+12 -> 22
+23 [ label="IfStatement" ];
+22 -> 23
+24 [ label="MeggyCheckButton" ];
+23 -> 24
+25 [ label="ButtonLiteral\nMeggy.Button.B" ];
+24 -> 25
+26 [ label="BlockStatement" ];
+23 -> 26
+27 [ label="MeggySetPixel" ];
+26 -> 27
+28 [ label="ByteCast" ];
+27 -> 28
+29 [ label="IntLiteral\n1" ];
+28 -> 29
+30 [ label="ByteCast" ];
+27 -> 30
+31 [ label="IntLiteral\n3" ];
+30 -> 31
+32 [ label="ColorLiteral\nMeggy.Color.RED" ];
+27 -> 32
+}
