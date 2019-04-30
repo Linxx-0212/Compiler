@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MJSIM">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TestCasesMeggy/MJSIM.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="PA4Start">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PA4Start/java-cup-11a.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PA4Start/JLex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PA4Start/java-cup-11a-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PA4Start/MJ.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PA4Start/MJRF.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

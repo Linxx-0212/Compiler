@@ -1,0 +1,489 @@
+digraph ASTGraph {
+0 [ label="Program" ];
+1 [ label="MainClass" ];
+0 -> 1
+2 [ label="BlockStatement" ];
+1 -> 2
+3 [ label="BlockStatement" ];
+2 -> 3
+4 [ label="CallStatement" ];
+3 -> 4
+5 [ label="NewExp" ];
+4 -> 5
+6 [ label="TopClassDecl" ];
+0 -> 6
+7 [ label="VarDecl" ];
+6 -> 7
+8 [ label="IntType" ];
+7 -> 8
+9 [ label="VarDecl" ];
+6 -> 9
+10 [ label="ColorArrayType" ];
+9 -> 10
+11 [ label="VarDecl" ];
+6 -> 11
+12 [ label="IntArrayType" ];
+11 -> 12
+13 [ label="MethodDecl" ];
+6 -> 13
+14 [ label="IntType" ];
+13 -> 14
+15 [ label="AssignStatement" ];
+13 -> 15
+16 [ label="CallExp" ];
+15 -> 16
+17 [ label="NewExp" ];
+16 -> 17
+18 [ label="AssignStatement" ];
+13 -> 18
+19 [ label="NewArrayExp" ];
+18 -> 19
+20 [ label="ColorType" ];
+19 -> 20
+21 [ label="IntLiteral\n3" ];
+19 -> 21
+22 [ label="AssignStatement" ];
+13 -> 22
+23 [ label="NewArrayExp" ];
+22 -> 23
+24 [ label="IntType" ];
+23 -> 24
+25 [ label="IntLiteral\n30" ];
+23 -> 25
+26 [ label="ArrayAssignStatement" ];
+13 -> 26
+27 [ label="IdLiteral\narray" ];
+26 -> 27
+28 [ label="IntLiteral\n2" ];
+26 -> 28
+29 [ label="ColorLiteral\nMeggy.Color.BLUE" ];
+26 -> 29
+30 [ label="AssignStatement" ];
+13 -> 30
+31 [ label="LengthExp" ];
+30 -> 31
+32 [ label="IdLiteral\nint_array" ];
+31 -> 32
+33 [ label="ArrayAssignStatement" ];
+13 -> 33
+34 [ label="IdLiteral\nint_array" ];
+33 -> 34
+35 [ label="IntLiteral\n20" ];
+33 -> 35
+36 [ label="IntLiteral\n3" ];
+33 -> 36
+37 [ label="ArrayAssignStatement" ];
+13 -> 37
+38 [ label="IdLiteral\nint_array" ];
+37 -> 38
+39 [ label="LengthExp" ];
+37 -> 39
+40 [ label="IdLiteral\narray" ];
+39 -> 40
+41 [ label="LengthExp" ];
+37 -> 41
+42 [ label="IdLiteral\nint_array" ];
+41 -> 42
+43 [ label="IntLiteral\n1" ];
+13 -> 43
+44 [ label="TopClassDecl" ];
+0 -> 44
+45 [ label="VarDecl" ];
+44 -> 45
+46 [ label="IntType" ];
+45 -> 46
+47 [ label="MethodDecl" ];
+44 -> 47
+48 [ label="IntType" ];
+47 -> 48
+49 [ label="VarDecl" ];
+47 -> 49
+50 [ label="ClassType" ];
+49 -> 50
+51 [ label="AssignStatement" ];
+47 -> 51
+52 [ label="NewExp" ];
+51 -> 52
+53 [ label="CallStatement" ];
+47 -> 53
+54 [ label="IdLiteral\nc" ];
+53 -> 54
+55 [ label="CallExp" ];
+47 -> 55
+56 [ label="CallExp" ];
+55 -> 56
+57 [ label="CallExp" ];
+56 -> 57
+58 [ label="CallExp" ];
+57 -> 58
+59 [ label="NewExp" ];
+58 -> 59
+60 [ label="CallExp" ];
+58 -> 60
+61 [ label="IdLiteral\nc" ];
+60 -> 61
+62 [ label="CallExp" ];
+56 -> 62
+63 [ label="IdLiteral\nc" ];
+62 -> 63
+64 [ label="TopClassDecl" ];
+0 -> 64
+65 [ label="VarDecl" ];
+64 -> 65
+66 [ label="ClassType" ];
+65 -> 66
+67 [ label="MethodDecl" ];
+64 -> 67
+68 [ label="VoidType" ];
+67 -> 68
+69 [ label="AssignStatement" ];
+67 -> 69
+70 [ label="NewExp" ];
+69 -> 70
+71 [ label="MethodDecl" ];
+64 -> 71
+72 [ label="ClassType" ];
+71 -> 72
+73 [ label="IdLiteral\nd" ];
+71 -> 73
+74 [ label="TopClassDecl" ];
+0 -> 74
+75 [ label="MethodDecl" ];
+74 -> 75
+76 [ label="IntType" ];
+75 -> 76
+77 [ label="IntLiteral\n4" ];
+75 -> 77
+78 [ label="MethodDecl" ];
+74 -> 78
+79 [ label="ClassType" ];
+78 -> 79
+80 [ label="NewExp" ];
+78 -> 80
+81 [ label="TopClassDecl" ];
+0 -> 81
+82 [ label="MethodDecl" ];
+81 -> 82
+83 [ label="ClassType" ];
+82 -> 83
+84 [ label="Formal" ];
+82 -> 84
+85 [ label="ClassType" ];
+84 -> 85
+86 [ label="VarDecl" ];
+82 -> 86
+87 [ label="IntArrayType" ];
+86 -> 87
+88 [ label="VarDecl" ];
+82 -> 88
+89 [ label="ColorArrayType" ];
+88 -> 89
+90 [ label="VarDecl" ];
+82 -> 90
+91 [ label="IntType" ];
+90 -> 91
+92 [ label="AssignStatement" ];
+82 -> 92
+93 [ label="IntLiteral\n0" ];
+92 -> 93
+94 [ label="AssignStatement" ];
+82 -> 94
+95 [ label="NewArrayExp" ];
+94 -> 95
+96 [ label="IntType" ];
+95 -> 96
+97 [ label="IntLiteral\n10" ];
+95 -> 97
+98 [ label="AssignStatement" ];
+82 -> 98
+99 [ label="NewArrayExp" ];
+98 -> 99
+100 [ label="ColorType" ];
+99 -> 100
+101 [ label="IntLiteral\n10" ];
+99 -> 101
+102 [ label="ArrayAssignStatement" ];
+82 -> 102
+103 [ label="IdLiteral\nindex_array" ];
+102 -> 103
+104 [ label="IntLiteral\n0" ];
+102 -> 104
+105 [ label="IntLiteral\n0" ];
+102 -> 105
+106 [ label="ArrayAssignStatement" ];
+82 -> 106
+107 [ label="IdLiteral\nindex_array" ];
+106 -> 107
+108 [ label="IntLiteral\n1" ];
+106 -> 108
+109 [ label="IntLiteral\n1" ];
+106 -> 109
+110 [ label="ArrayAssignStatement" ];
+82 -> 110
+111 [ label="IdLiteral\nindex_array" ];
+110 -> 111
+112 [ label="IntLiteral\n2" ];
+110 -> 112
+113 [ label="IntLiteral\n2" ];
+110 -> 113
+114 [ label="WhileStatement" ];
+82 -> 114
+115 [ label="LtExp" ];
+114 -> 115
+116 [ label="IdLiteral\nindex" ];
+115 -> 116
+117 [ label="LengthExp" ];
+115 -> 117
+118 [ label="IdLiteral\nindex_array" ];
+117 -> 118
+119 [ label="BlockStatement" ];
+114 -> 119
+120 [ label="IfStatement" ];
+119 -> 120
+121 [ label="EqualExp" ];
+120 -> 121
+122 [ label="ArrayExp" ];
+121 -> 122
+123 [ label="IdLiteral\nindex_array" ];
+122 -> 123
+124 [ label="IdLiteral\nindex" ];
+122 -> 124
+125 [ label="IntLiteral\n0" ];
+121 -> 125
+126 [ label="BlockStatement" ];
+120 -> 126
+127 [ label="ArrayAssignStatement" ];
+126 -> 127
+128 [ label="IdLiteral\ncolor_array" ];
+127 -> 128
+129 [ label="IdLiteral\nindex" ];
+127 -> 129
+130 [ label="ColorLiteral\nMeggy.Color.BLUE" ];
+127 -> 130
+131 [ label="IfStatement" ];
+120 -> 131
+132 [ label="EqualExp" ];
+131 -> 132
+133 [ label="ArrayExp" ];
+132 -> 133
+134 [ label="IdLiteral\nindex_array" ];
+133 -> 134
+135 [ label="IdLiteral\nindex" ];
+133 -> 135
+136 [ label="IntLiteral\n1" ];
+132 -> 136
+137 [ label="BlockStatement" ];
+131 -> 137
+138 [ label="ArrayAssignStatement" ];
+137 -> 138
+139 [ label="IdLiteral\ncolor_array" ];
+138 -> 139
+140 [ label="IdLiteral\nindex" ];
+138 -> 140
+141 [ label="ColorLiteral\nMeggy.Color.ORANGE" ];
+138 -> 141
+142 [ label="IfStatement" ];
+131 -> 142
+143 [ label="EqualExp" ];
+142 -> 143
+144 [ label="ArrayExp" ];
+143 -> 144
+145 [ label="IdLiteral\nindex_array" ];
+144 -> 145
+146 [ label="IdLiteral\nindex" ];
+144 -> 146
+147 [ label="IntLiteral\n2" ];
+143 -> 147
+148 [ label="BlockStatement" ];
+142 -> 148
+149 [ label="ArrayAssignStatement" ];
+148 -> 149
+150 [ label="IdLiteral\ncolor_array" ];
+149 -> 150
+151 [ label="IdLiteral\nindex" ];
+149 -> 151
+152 [ label="ColorLiteral\nMeggy.Color.YELLOW" ];
+149 -> 152
+153 [ label="BlockStatement" ];
+142 -> 153
+154 [ label="ArrayAssignStatement" ];
+153 -> 154
+155 [ label="IdLiteral\ncolor_array" ];
+154 -> 155
+156 [ label="IdLiteral\nindex" ];
+154 -> 156
+157 [ label="ColorLiteral\nMeggy.Color.WHITE" ];
+154 -> 157
+158 [ label="AssignStatement" ];
+119 -> 158
+159 [ label="PlusExp" ];
+158 -> 159
+160 [ label="IdLiteral\nindex" ];
+159 -> 160
+161 [ label="IntLiteral\n1" ];
+159 -> 161
+162 [ label="IdLiteral\nd" ];
+82 -> 162
+163 [ label="MethodDecl" ];
+81 -> 163
+164 [ label="ClassType" ];
+163 -> 164
+165 [ label="Formal" ];
+163 -> 165
+166 [ label="ClassType" ];
+165 -> 166
+167 [ label="VarDecl" ];
+163 -> 167
+168 [ label="IntArrayType" ];
+167 -> 168
+169 [ label="VarDecl" ];
+163 -> 169
+170 [ label="ColorArrayType" ];
+169 -> 170
+171 [ label="VarDecl" ];
+163 -> 171
+172 [ label="IntType" ];
+171 -> 172
+173 [ label="AssignStatement" ];
+163 -> 173
+174 [ label="IntLiteral\n0" ];
+173 -> 174
+175 [ label="AssignStatement" ];
+163 -> 175
+176 [ label="NewArrayExp" ];
+175 -> 176
+177 [ label="IntType" ];
+176 -> 177
+178 [ label="IntLiteral\n10" ];
+176 -> 178
+179 [ label="AssignStatement" ];
+163 -> 179
+180 [ label="NewArrayExp" ];
+179 -> 180
+181 [ label="ColorType" ];
+180 -> 181
+182 [ label="IntLiteral\n10" ];
+180 -> 182
+183 [ label="ArrayAssignStatement" ];
+163 -> 183
+184 [ label="IdLiteral\ncolor_array" ];
+183 -> 184
+185 [ label="IntLiteral\n0" ];
+183 -> 185
+186 [ label="ColorLiteral\nMeggy.Color.BLUE" ];
+183 -> 186
+187 [ label="ArrayAssignStatement" ];
+163 -> 187
+188 [ label="IdLiteral\ncolor_array" ];
+187 -> 188
+189 [ label="IntLiteral\n1" ];
+187 -> 189
+190 [ label="ColorLiteral\nMeggy.Color.ORANGE" ];
+187 -> 190
+191 [ label="ArrayAssignStatement" ];
+163 -> 191
+192 [ label="IdLiteral\ncolor_array" ];
+191 -> 192
+193 [ label="IntLiteral\n2" ];
+191 -> 193
+194 [ label="ColorLiteral\nMeggy.Color.YELLOW" ];
+191 -> 194
+195 [ label="WhileStatement" ];
+163 -> 195
+196 [ label="LtExp" ];
+195 -> 196
+197 [ label="IdLiteral\nindex" ];
+196 -> 197
+198 [ label="LengthExp" ];
+196 -> 198
+199 [ label="IdLiteral\nindex_array" ];
+198 -> 199
+200 [ label="BlockStatement" ];
+195 -> 200
+201 [ label="IfStatement" ];
+200 -> 201
+202 [ label="EqualExp" ];
+201 -> 202
+203 [ label="ArrayExp" ];
+202 -> 203
+204 [ label="IdLiteral\ncolor_array" ];
+203 -> 204
+205 [ label="IdLiteral\nindex" ];
+203 -> 205
+206 [ label="ColorLiteral\nMeggy.Color.BLUE" ];
+202 -> 206
+207 [ label="BlockStatement" ];
+201 -> 207
+208 [ label="ArrayAssignStatement" ];
+207 -> 208
+209 [ label="IdLiteral\nindex_array" ];
+208 -> 209
+210 [ label="IdLiteral\nindex" ];
+208 -> 210
+211 [ label="IntLiteral\n0" ];
+208 -> 211
+212 [ label="IfStatement" ];
+201 -> 212
+213 [ label="EqualExp" ];
+212 -> 213
+214 [ label="ArrayExp" ];
+213 -> 214
+215 [ label="IdLiteral\ncolor_array" ];
+214 -> 215
+216 [ label="IdLiteral\nindex" ];
+214 -> 216
+217 [ label="ColorLiteral\nMeggy.Color.ORANGE" ];
+213 -> 217
+218 [ label="BlockStatement" ];
+212 -> 218
+219 [ label="ArrayAssignStatement" ];
+218 -> 219
+220 [ label="IdLiteral\nindex_array" ];
+219 -> 220
+221 [ label="IdLiteral\nindex" ];
+219 -> 221
+222 [ label="IntLiteral\n1" ];
+219 -> 222
+223 [ label="IfStatement" ];
+212 -> 223
+224 [ label="EqualExp" ];
+223 -> 224
+225 [ label="ArrayExp" ];
+224 -> 225
+226 [ label="IdLiteral\ncolor_array" ];
+225 -> 226
+227 [ label="IdLiteral\nindex" ];
+225 -> 227
+228 [ label="ColorLiteral\nMeggy.Color.YELLOW" ];
+224 -> 228
+229 [ label="BlockStatement" ];
+223 -> 229
+230 [ label="ArrayAssignStatement" ];
+229 -> 230
+231 [ label="IdLiteral\nindex_array" ];
+230 -> 231
+232 [ label="IdLiteral\nindex" ];
+230 -> 232
+233 [ label="IntLiteral\n2" ];
+230 -> 233
+234 [ label="BlockStatement" ];
+223 -> 234
+235 [ label="ArrayAssignStatement" ];
+234 -> 235
+236 [ label="IdLiteral\nindex_array" ];
+235 -> 236
+237 [ label="IdLiteral\nindex" ];
+235 -> 237
+238 [ label="IntLiteral\n3" ];
+235 -> 238
+239 [ label="AssignStatement" ];
+200 -> 239
+240 [ label="PlusExp" ];
+239 -> 240
+241 [ label="IdLiteral\nindex" ];
+240 -> 241
+242 [ label="IntLiteral\n1" ];
+240 -> 242
+243 [ label="IdLiteral\nd" ];
+163 -> 243
+}

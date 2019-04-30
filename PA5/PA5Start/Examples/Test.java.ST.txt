@@ -1,0 +1,40 @@
+Classes in global Scope: A B C D E 
+
+In class A Scope
+Vars in current Scope: a:INT array:COLORARRAY int_array:INTARRAY 
+Methods in current Scope: call 
+In method call Scope
+Method Signature() returns INT
+Vars in current Scope: This:class_A 
+In class B Scope
+Vars in current Scope: a:INT 
+Methods in current Scope: call 
+In method call Scope
+Method Signature() returns INT
+Vars in current Scope: This:class_B c:class_C 
+In class C Scope
+Vars in current Scope: d:class_D 
+Methods in current Scope: call init 
+In method call Scope
+Method Signature() returns class_D
+Vars in current Scope: This:class_C 
+In method init Scope
+Method Signature() returns class_null;
+Vars in current Scope: This:class_C 
+In class D Scope
+Methods in current Scope: call getE 
+In method call Scope
+Method Signature() returns INT
+Vars in current Scope: This:class_D 
+In method getE Scope
+Method Signature() returns class_E
+Vars in current Scope: This:class_D 
+In class E Scope
+Methods in current Scope: call kall 
+In method call Scope
+Method Signature(class_D) returns class_D
+Vars in current Scope: This:class_E color_array:COLORARRAY d:class_D index:INT index_array:INTARRAY 
+In method kall Scope
+Method Signature(class_D) returns class_D
+Vars in current Scope: This:class_E color_array:COLORARRAY d:class_D index:INT index_array:INTARRAY 
+

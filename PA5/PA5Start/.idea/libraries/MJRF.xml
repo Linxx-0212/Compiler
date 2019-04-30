@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MJRF">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Examples/MJRF.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

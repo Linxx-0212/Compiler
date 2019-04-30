@@ -1,0 +1,8 @@
+Classes in global Scope: Simple 
+
+In class Simple Scope
+Methods in current Scope: bluedot 
+In method bluedot Scope
+Method Signature(BYTE, BYTE) returns class_null;
+Vars in current Scope: This:class_Simple x:BYTE y:BYTE 
+
