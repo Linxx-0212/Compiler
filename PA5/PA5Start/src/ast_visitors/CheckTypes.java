@@ -427,6 +427,14 @@ public class CheckTypes extends DepthFirstVisitor
    	else
    	    mCurrentST.setExpType(newArrayExp,Type.INTARRAY);
    }
+//   public void outVarDecl(VarDecl varDecl) {
+//       if (getIType(varDecl.getType()).toString().equals("class_button"))
+//           throw new SemanticException(
+//                   "Button is not supported",
+//                   varDecl.getLine(),
+//                   varDecl.getPos()
+//           );
+//   }
 
 
    public void outColorExp(ColorLiteral colorLiteral) {
@@ -504,7 +512,7 @@ public class CheckTypes extends DepthFirstVisitor
 	if(var != null) {
    		String LType = var.getType().toString();
    		String RType = this.mCurrentST.getExpType(node.getExp()).toString();
-   		if(!(LType.equalsIgnoreCase(RType)||(LType.equals("COLORARRAY") && RType.equals("COLOR"))||(LType.equals("INTARRAY") && (RType.equals("INT")||RType.equals("BYTE"))))) {
+   		if(!(LType.equalsIgnoreCase(RType)||(LType.equals("COLORARRAY") && RType.equals("COLOR"))||(LType.equals("INTARRAY") && (RType.equals("INT")||RType.equals("BYTE"))))||LType.equals("BUTTON")) {
    			throw new SemanticException(
    					"Variable type error",
 					node.getExp().getLine(),
@@ -608,26 +616,41 @@ public class CheckTypes extends DepthFirstVisitor
 
 	}
 
-	public Type getIType(IType node){
-		if(node instanceof BoolType){
-			return Type.BOOL;
-		}
-		if(node instanceof IntType)
-			return Type.INT;
 
-		if(node instanceof ByteType)
-			return Type.BYTE;
+    public Type getIType(IType node){
 
-		if(node instanceof ColorType)
-			return Type.COLOR;
+        if(node instanceof BoolType)
+            return Type.BOOL;
 
-		if(node instanceof ButtonType)
-			return Type.BUTTON;
+        if(node instanceof IntType)
+            return Type.INT;
 
-		if(node instanceof ToneType)
-			return Type.TONE;
+        if(node instanceof ByteType)
+            return Type.BYTE;
 
-		return Type.VOID;
-	}
+        if(node instanceof ColorType)
+            return Type.COLOR;
+
+        if(node instanceof ButtonType)
+            return Type.BUTTON;
+
+        if(node instanceof ToneType)
+            return Type.TONE;
+
+        if(node instanceof VoidType)
+            return Type.VOID;
+        if(node instanceof IntArrayType)
+            return Type.INTARRAY;
+        if(node instanceof ColorArrayType)
+            return Type.COLORARRAY;
+
+        if(node instanceof ClassType)
+        {
+            ClassType a = (ClassType)node;
+            return new Type(a.getName());
+        }
+        return null;
+
+    }
 
 }

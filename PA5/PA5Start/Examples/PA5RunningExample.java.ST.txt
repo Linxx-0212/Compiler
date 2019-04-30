@@ -1,0 +1,10 @@
+Classes in global Scope: B C 
+
+In class B Scope
+In class C Scope
+Vars in current Scope: c:class_C i:INT 
+Methods in current Scope: foo 
+In method foo Scope
+Method Signature(BOOL) returns INT
+Vars in current Scope: This:class_C b:class_B p:BOOL 
+

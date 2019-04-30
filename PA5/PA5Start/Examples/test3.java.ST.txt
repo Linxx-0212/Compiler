@@ -1,0 +1,8 @@
+Classes in global Scope: Simple 
+
+In class Simple Scope
+Methods in current Scope: bluedot 
+In method bluedot Scope
+Method Signature(INT, INT) returns class_null;
+Vars in current Scope: This:class_Simple a:BUTTON x:INT y:INT 
+

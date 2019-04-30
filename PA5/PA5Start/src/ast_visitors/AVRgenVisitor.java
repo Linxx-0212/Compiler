@@ -558,7 +558,7 @@ private void genMoveReg(AVRgenVisitor.RegPair reg1, AVRgenVisitor.RegPair reg2) 
     public void outTrueExp(TrueLiteral trueLiteral) {
         this.output.println();
         this.output.println("    # True/1 expression");
-        this.output.println("    ldi     r22, 1");
+        this.output.println("    ldi    r22, 1");
         AVRgenVisitor.RegPair reg = new AVRgenVisitor.RegPair("r22", (String)null);
         this.genStoreExp(trueLiteral, reg);
     }
